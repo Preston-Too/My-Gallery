@@ -36,3 +36,18 @@ class TestImage(TestCase):
         imageF = self.testInstance.getimageById(self.testInstance.id)
         image = Image.objects.filter(id=self.testInstance.id)
         self.assertTrue(imageF, image)
+
+    def test_search_image_by_location(self):
+        self.testInstance.saveImage()
+        foundImages = self.testInstance.filterimageByLocation(imageLocation='Nairobi')
+        self.assertTrue(len(found_images) == 1)
+
+    def test_search_image_by_category(self):
+        category = 'nature'
+        foundImages = self.testInstance.searchImage(category)
+        self.assertTrue(len(found_img) > 1)
+
+    def tearDown(self):
+        Image.objects.all().delete()
+        Location.objects.all().delete()
+        Category.objects.all().delete()

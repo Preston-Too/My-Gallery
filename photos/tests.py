@@ -25,3 +25,14 @@ class TestImage(TestCase):
         self.testInstance.deleteImage()
         images = Image.objects.all()
         self.assertTrue(len(images) == 0)
+
+    def test_update_image(self):
+        self.testInstance.saveImage()
+        self.testInstance.updateImage(self.testInstance.id, 'images/img.jpg')
+        imgUpdt = Image.objects.filter(image='images/test.jpg')
+        self.assertTrue(len(imgUpdt) > 0)
+
+    def test_get_image_by_id(self):
+        imageF = self.testInstance.getimageById(self.testInstance.id)
+        image = Image.objects.filter(id=self.testInstance.id)
+        self.assertTrue(imageF, image)

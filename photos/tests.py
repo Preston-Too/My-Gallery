@@ -15,3 +15,13 @@ class TestImage(TestCase):
 
     def test_instance(self):
         self.assertTrue(isinstance(self.testInstance, Image))
+
+    def test_save_image(self):
+        self.testInstance.saveImage()
+        filterImage= Image.objects.all()
+        self.assertTrue(len(filterImage) > 0)
+
+    def test_delete_image(self):
+        self.testInstance.deleteImage()
+        images = Image.objects.all()
+        self.assertTrue(len(images) == 0)

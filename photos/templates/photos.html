@@ -9,12 +9,26 @@
 </head>
 
 <body>
-    <div class="" style="font-size: 20px; font-family: 'Itim', cursive;">
+    <div class="" style="font-size: 20px; font-family: 'Merienda', cursive;">
         {%extends 'base.html' %}
 
         {% block content %}
+        <style>
+            body{
+              background-image: url("/media/images/back1.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    z-index: -1;
+            }
+            </style>
         {{block.super}}
         <h1 class='text-center'> My Gallery</h1> 
+        <div class="container-fluid text-center landing text-primary">
+            <h1 class="mb-4 d-none d-md-block text-center">
+            A photograph keeps a moment from running away.
+            </h1>
+            <p>Search photos from these categories; <strong>Nature,Technology and Animals.</strong> </p>
+        </div>
         {%for location in locations %}
         <a href="/location/{{location.locationName}}" class="pl-3"> {{location.locationName}}</a> 
         {%endfor%}
@@ -31,7 +45,7 @@
                         <div class="view overlay">
                             <a data-toggle="modal" data-target="#photoId{{photo.id}}">
                                 <img src="{{photo.image.url}}" class="card-img-top img-responsive styled" alt=" image"
-                                    width="100p">
+                                    width="100" height="200">
                             </a>
                         </div>
                      
@@ -59,6 +73,8 @@
                                         <div class="col-sm">Location: {{photo.imageLocation}}</div>
                                         <div class="col-sm">Category: {{photo.imageCategory}}</div>
                                     </div>
+                                    <input class="form-control input-lg" type="text"
+                                    value="{{photo.image.url}}" id="{{image.id}}.url">
                                     <button type="button" class="btn btn-secondary" onclick="copy('{{image.id}}.url')">Copy Link</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>

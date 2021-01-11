@@ -54,6 +54,8 @@
                                     <div class="col-sm">Description: {{photo.imageDescription}}</div>
                                     <div class="col-sm">Location: {{photo.imageLocation}}</div>
                                 </div>
+                                <input class="form-control input-lg" type="text"
+                                value="{{photo.image.url}}" id="{{image.id}}.url">
                                 <button type="button" class="btn btn-secondary" onclick="copy('{{image.id}}.url')">Copy Link</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
